@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeSelector } from './ThemeSelector';
-import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
 
 export const NavigationBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null);
+  const [activePanel, setActivePanel] = useState(null); // Mobile redesigned panel selector
   const location = useLocation();
 
   useEffect(() => {
@@ -21,6 +22,7 @@ export const NavigationBar = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setOpenSubMenu(null);
+    setActivePanel(null);
   }, [location.pathname]);
 
   // Prevent body scroll when mobile menu is open
@@ -34,6 +36,14 @@ export const NavigationBar = () => {
       document.body.style.overflow = 'auto';
     };
   }, [isMobileMenuOpen]);
+
+  // Reset overlay scroll position when switching mobile panels
+  useEffect(() => {
+    const overlay = document.querySelector('.nav-overlay');
+    if (overlay) {
+      overlay.scrollTop = 0;
+    }
+  }, [activePanel, isMobileMenuOpen]);
 
   const toggleSubMenu = (menuName) => {
     setOpenSubMenu(openSubMenu === menuName ? null : menuName);
@@ -53,7 +63,9 @@ export const NavigationBar = () => {
         </div>
         
         <div className={`nav-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
-          <ul className="nav-links">
+          
+          {/* DESKTOP NAVIGATION (Hidden on mobile) */}
+          <ul className="nav-links desktop-only-nav">
             <li className={`nav-item ${openSubMenu === 'incomeTax' ? 'mobile-open' : ''}`}>
               <div className="nav-link" onClick={() => toggleSubMenu('incomeTax')}>
                 Income Tax <span className="nav-arrow">{openSubMenu === 'incomeTax' ? <ChevronUp size={16}/> : <ChevronDown size={16}/>}</span>
@@ -166,6 +178,200 @@ export const NavigationBar = () => {
               </div>
             </li>
           </ul>
+
+          {/* MOBILE NAVIGATION (Hidden on desktop) */}
+          <div className="mobile-only-nav">
+            <div className={`nav-slider-wrapper ${activePanel ? 'slide-active' : ''}`}>
+              
+              {/* PANEL 1: Main Panel */}
+              <div className="nav-main-panel">
+                <div className="category-grid">
+                  
+                  {/* Category Card: Income Tax */}
+                  <div className="category-card" onClick={() => setActivePanel('incomeTax')}>
+                    <div className="category-badge badge-purple">💵</div>
+                    <div className="category-title">Income Tax</div>
+                    <div className="category-subtitle">ITR, TDS, Notices & Tax Planning</div>
+                  </div>
+
+                  {/* Category Card: GST */}
+                  <div className="category-card" onClick={() => setActivePanel('gst')}>
+                    <div className="category-badge badge-blue">📊</div>
+                    <div className="category-title">GST Services</div>
+                    <div className="category-subtitle">Registration, Returns & Reconciliation</div>
+                  </div>
+
+                  {/* Category Card: Corporate */}
+                  <div className="category-card" onClick={() => setActivePanel('corporate')}>
+                    <div className="category-badge badge-green">🏢</div>
+                    <div className="category-title">Corporate</div>
+                    <div className="category-subtitle">Company/LLP Incorporation & Compliance</div>
+                  </div>
+
+                  {/* Category Card: Other Services */}
+                  <div className="category-card" onClick={() => setActivePanel('other')}>
+                    <div className="category-badge badge-amber">🛠️</div>
+                    <div className="category-title">Other Services</div>
+                    <div className="category-subtitle">Property, PAN, NRI & Advisory</div>
+                  </div>
+
+                </div>
+
+                {/* Regular Menu Links */}
+                <div className="nav-links-simple">
+                  <Link to="/pricing" className="nav-link-simple-item">
+                    <span>Pricing Plans</span>
+                    <span className="mobile-service-item-arrow">→</span>
+                  </Link>
+                  <Link to="/contact" className="nav-link-simple-item">
+                    <span>Contact Us</span>
+                    <span className="mobile-service-item-arrow">→</span>
+                  </Link>
+                </div>
+
+                {/* Bottom Actions Bar */}
+                <div className="mobile-bottom-bar">
+                  <ThemeSelector />
+                  <Link to="/portal" className="nav-cta liquid-glass" style={{ margin: 0 }}>
+                    🚀 Client Portal
+                  </Link>
+                </div>
+              </div>
+
+              {/* PANEL 2: Sub-category Panel */}
+              <div className="nav-sub-panel">
+                <button className="sub-panel-back-btn" onClick={() => setActivePanel(null)}>
+                  <ArrowLeft size={16} /> Back to Menu
+                </button>
+
+                {activePanel === 'incomeTax' && (
+                  <div>
+                    <div className="sub-panel-title">Income Tax Services</div>
+                    
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">ITR Filing</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📄</span><span className="mobile-service-item-name">ITR for Salaried</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">💼</span><span className="mobile-service-item-name">ITR for Business</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🏗️</span><span className="mobile-service-item-name">ITR for Professionals</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🌐</span><span className="mobile-service-item-name">NRI Tax Return</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">TDS & Advance Tax</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">⏰</span><span className="mobile-service-item-name">TDS Return Filing</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">💳</span><span className="mobile-service-item-name">Advance Tax Payment</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📋</span><span className="mobile-service-item-name">Form 15CA / 15CB</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">Notices & Planning</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">⚖️</span><span className="mobile-service-item-name">IT Notice Reply</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🔍</span><span className="mobile-service-item-name">Scrutiny Assessment</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📊</span><span className="mobile-service-item-name">Tax Planning</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item" style={{ borderLeft: '3px solid var(--primary)' }}><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🧮</span><span className="mobile-service-item-name" style={{ color: 'var(--primary)', fontWeight: 600 }}>Income Tax Calculator</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activePanel === 'gst' && (
+                  <div>
+                    <div className="sub-panel-title">GST Services</div>
+                    
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">Registration & Mod</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🔖</span><span className="mobile-service-item-name">GST Registration</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">✏️</span><span className="mobile-service-item-name">GST Amendment</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">❌</span><span className="mobile-service-item-name">GST Cancellation</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🔄</span><span className="mobile-service-item-name">GST Revocation</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">Return Filing</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📅</span><span className="mobile-service-item-name">GSTR-1 Filing</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🗓️</span><span className="mobile-service-item-name">GSTR-3B Filing</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📆</span><span className="mobile-service-item-name">GSTR-9 Annual</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">💰</span><span className="mobile-service-item-name">ITC Reconciliation</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">Audit & Claims</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🔍</span><span className="mobile-service-item-name">GST Audit</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📩</span><span className="mobile-service-item-name">GST Notice Reply</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🚚</span><span className="mobile-service-item-name">E-Way Bill</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">💸</span><span className="mobile-service-item-name">GST Refund</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activePanel === 'corporate' && (
+                  <div>
+                    <div className="sub-panel-title">Corporate Services</div>
+                    
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">Incorporation</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🏢</span><span className="mobile-service-item-name">Private Limited Co.</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🤝</span><span className="mobile-service-item-name">LLP Registration</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">👤</span><span className="mobile-service-item-name">One Person Company</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🌱</span><span className="mobile-service-item-name">Startup India</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">ROC & Compliance</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📑</span><span className="mobile-service-item-name">Annual ROC Filing</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🪪</span><span className="mobile-service-item-name">Director KYC</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📊</span><span className="mobile-service-item-name">Accounting & Books</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📋</span><span className="mobile-service-item-name">MSME Registration</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">Licenses & IP</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🌍</span><span className="mobile-service-item-name">Import Export Code</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🏬</span><span className="mobile-service-item-name">Trade Licence</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">™️</span><span className="mobile-service-item-name">Trademark Filing</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activePanel === 'other' && (
+                  <div>
+                    <div className="sub-panel-title">Other Services</div>
+                    
+                    <div className="mobile-service-group">
+                      <div className="mobile-service-group-title">All Services</div>
+                      <div className="mobile-service-list">
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🏠</span><span className="mobile-service-item-name">Property Tax Advisory</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📜</span><span className="mobile-service-item-name">PAN / TAN Services</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🌐</span><span className="mobile-service-item-name">NRI / FEMA Advisory</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🛡️</span><span className="mobile-service-item-name">Investment Advisory</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📝</span><span className="mobile-service-item-name">Loan Documentation</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/services" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📦</span><span className="mobile-service-item-name">Payroll Services</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
         {/* Desktop Right Side */}
