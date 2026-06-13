@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Card } from '../ui/Card';
 import { Button } from '../ui/Button';
 import { CheckCircle } from 'lucide-react';
@@ -166,7 +167,7 @@ export const Pricing = () => {
 
       <div style={{ textAlign: 'center', marginTop: 40 }}>
         <p style={{ fontSize: 14, color: 'var(--text-secondary)' }}>
-          Not sure which plan suits you? All prices are exclusive of GST. <a href="#contact" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>Talk to our experts for a free consultation. →</a>
+          Not sure which plan suits you? All prices are exclusive of GST. <Link to="/contact" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>Talk to our experts for a free consultation. →</Link>
         </p>
       </div>
     </section>

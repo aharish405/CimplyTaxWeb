@@ -1,20 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const TrustBar = () => {
   return (
-    <div className="trust-bar" style={{ padding: '24px 5%', borderBottom: '1px solid var(--glass-border)', background: 'var(--glass-bg)' }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-        <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-          <a href="#pricing" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>🧾 ITR Filing — Open Now</a>
-          <a href="#pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>📄 Salaried ITR</a>
-          <a href="#pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>💼 Business ITR</a>
-          <a href="#pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>📈 Capital Gains</a>
-          <a href="#pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>🌐 NRI Returns</a>
+    <div style={{ padding: '16px 0', borderBottom: '1px solid var(--glass-border)', background: 'var(--bg-color)', zIndex: 10 }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 }}>
+        <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+          <Link to="/pricing" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>🧾 ITR Filing — Open Now</Link>
+          <Link to="/pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>📄 Salaried ITR</Link>
+          <Link to="/pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>💼 Business ITR</Link>
+          <Link to="/pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>📈 Capital Gains</Link>
+          <Link to="/pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>🌐 NRI Returns</Link>
         </div>
         <div>
-          <a href="#contact" className="liquid-glass" style={{ padding: '8px 16px', borderRadius: '8px', color: 'var(--text-primary)', fontWeight: 600, textDecoration: 'none' }}>
-            📞 Free Expert Call
-          </a>
+          <Link to="/contact" className="liquid-glass" style={{ padding: '8px 16px', borderRadius: '8px', color: 'var(--text-primary)', fontWeight: 600, textDecoration: 'none' }}>
+            💬 Chat with CA
+          </Link>
         </div>
       </div>
     </div>

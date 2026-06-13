@@ -157,8 +157,27 @@ export const ServiceModal = ({ isOpen, onClose, serviceKey }) => {
 
           {/* Footer */}
           <div style={{ padding: '20px 32px', borderTop: '1px solid var(--glass-border)', display: 'flex', gap: 16 }}>
-            <Button variant="primary" style={{ flex: 1 }}>File Now</Button>
-            <Button variant="secondary">Call Us</Button>
+            <Button 
+              variant="primary" 
+              style={{ flex: 1 }} 
+              onClick={() => {
+                let itemsText = [];
+                let idx = 0;
+                data.sections.forEach(sec => {
+                  sec.items.forEach(item => {
+                    if (checkedItems.has(idx)) {
+                      itemsText.push(`- ${item.t}`);
+                    }
+                    idx++;
+                  });
+                });
+                const text = `*Get Started: ${serviceKey}*\n\nI have the following documents ready:\n${itemsText.join('\n')}\n\nPlease advise on next steps.`;
+                window.open(`https://wa.me/919000292492?text=${encodeURIComponent(text)}`, '_blank');
+              }}
+            >
+              Get Started via WhatsApp
+            </Button>
+            <Button variant="secondary" onClick={() => window.open('tel:+919000292492')}>Call Us</Button>
           </div>
         </motion.div>
       </div>

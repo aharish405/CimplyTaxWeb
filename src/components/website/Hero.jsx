@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '../ui/Button';
 
+import { useNavigate } from 'react-router-dom';
+
 export const Hero = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const deadline = new Date('2026-07-31T23:59:59+05:30').getTime();
@@ -46,8 +49,8 @@ export const Hero = () => {
         </p>
         
         <div className="hero-actions" style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 32 }}>
-          <Button variant="primary" icon={<ArrowRight size={18} />}>File ITR Now</Button>
-          <Button variant="secondary">View Pricing</Button>
+          <Button variant="primary" icon={<ArrowRight size={18} />} onClick={() => navigate('/contact')}>File ITR Now</Button>
+          <Button variant="secondary" onClick={() => navigate('/pricing')}>View Pricing</Button>
         </div>
 
         {/* Timer Box */}

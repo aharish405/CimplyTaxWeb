@@ -13,7 +13,7 @@ export const Footer = () => {
           <p style={{ color: 'var(--text-secondary)', fontSize: 14, lineHeight: 1.6, maxWidth: 300, marginBottom: 24 }}>
             India's AI-powered digital tax & compliance platform. Expert CA team, real-time tracking, serving Hyderabad & Pan-India.
           </p>
-          <div style={{ fontSize: 14, color: 'var(--text-primary)', fontWeight: 600, marginBottom: 8 }}>📞 +91-8015098385</div>
+          <div style={{ fontSize: 14, color: 'var(--text-primary)', fontWeight: 600, marginBottom: 8 }}>📞 +91-9000292492</div>
           <div style={{ fontSize: 14, color: 'var(--text-primary)', fontWeight: 600, marginBottom: 8 }}>✉️ itr@cimplytax.com</div>
           <div style={{ fontSize: 14, color: 'var(--text-primary)', fontWeight: 600 }}>📍 Krishe Emerald, Kondapur,<br />Hyderabad, Telangana 500081, India</div>
         </div>

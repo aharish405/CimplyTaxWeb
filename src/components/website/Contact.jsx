@@ -8,6 +8,9 @@ export const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const text = `*New Enquiry*\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nService: ${formData.service}\nMessage: ${formData.message}`;
+    const encodedText = encodeURIComponent(text);
+    window.open(`https://wa.me/919000292492?text=${encodedText}`, '_blank');
     setSubmitted(true);
   };
 
@@ -53,7 +56,7 @@ export const Contact = () => {
                 <span style={{ fontSize: 20 }}>📞</span>
                 <div>
                   <div style={{ fontWeight: 600, fontSize: 14 }}>Phone & WhatsApp</div>
-                  <div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>+91 8015098385</div>
+                  <div style={{ fontSize: 14, color: 'var(--text-secondary)' }}>+91 9000292492</div>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: 12 }}>
@@ -81,9 +84,9 @@ export const Contact = () => {
               <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
               <h3 className="serif" style={{ fontSize: '1.8rem', marginBottom: 12 }}>Enquiry Received!</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 24 }}>
-                Thank you! We'll reach out to you within <strong>24 hours</strong> via phone or WhatsApp. You can also reach us directly at <strong>+91 8015098385</strong>.
+                Thank you! We'll reach out to you within <strong>24 hours</strong> via phone or WhatsApp. You can also reach us directly at <strong>+91 9000292492</strong>.
               </p>
-              <a href="https://wa.me/918015098385?text=Hi%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website." target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#25D366', color: '#fff', textDecoration: 'none', padding: '10px 20px', borderRadius: 8, fontWeight: 600, fontSize: 14 }}>
+              <a href="https://wa.me/919000292492?text=Hi%2C%20I%20just%20submitted%20an%20enquiry%20on%20your%20website." target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#25D366', color: '#fff', textDecoration: 'none', padding: '10px 20px', borderRadius: 8, fontWeight: 600, fontSize: 14 }}>
                 💬 Chat on WhatsApp
               </a>
             </div>

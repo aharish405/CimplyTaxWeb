@@ -31,7 +31,7 @@ const CAI_KB = [
     a: `**GST Registration — ₹1,999** (all-inclusive, free 30-min CA consult)\n\nIssued in **7 working days**. We handle ARN tracking, GSTIN issuance and certificate delivery.\n\n**Documents:** PAN, Aadhaar of proprietor/partners; business address proof (electricity bill / rent agreement + NOC); cancelled cheque; HSN/SAC codes; passport-size photos.\n\nMandatory if turnover > ₹40L goods / ₹20L services (₹20L / ₹10L in special-category states) or for inter-state supply / e-commerce.`,
     next: ['GST documents','GST return cost','Buy GST registration'] },
   { id: 'contact', keywords: ['talk','human','ca','call','phone','contact','whatsapp','speak','agent'],
-    a: `👋 **Talk to a real CA** — happy to help!\n- **WhatsApp:** [+91 80150 98385](https://wa.me/918015098385) (instant)\n- **Phone:** +91 80150 98385 (Mon–Sat, 9 AM – 7 PM IST)\n- **Email:** itr@cimplytax.com\n- **Office:** Krishe Emerald, Kondapur Main Road, Hitec City, Hyderabad — 500081\n\nResponse within **30 minutes** during working hours.`,
+    a: `👋 **Talk to a real CA** — happy to help!\n- **WhatsApp:** [+91 90002 92492](https://wa.me/919000292492) (instant)\n- **Phone:** +91 90002 92492 (Mon–Sat, 9 AM – 7 PM IST)\n- **Email:** itr@cimplytax.com\n- **Office:** Krishe Emerald, Kondapur Main Road, Hitec City, Hyderabad — 500081\n\nResponse within **30 minutes** during working hours.`,
     next: ['Open client portal','ITR pricing','Office address'] }
 ];
 
