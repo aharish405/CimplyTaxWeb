@@ -23,6 +23,18 @@ export const NavigationBar = () => {
     setOpenSubMenu(null);
   }, [location.pathname]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMobileMenuOpen]);
+
   const toggleSubMenu = (menuName) => {
     setOpenSubMenu(openSubMenu === menuName ? null : menuName);
   };
@@ -145,10 +157,10 @@ export const NavigationBar = () => {
             <li className="nav-item"><Link to="/contact" className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`}>Contact</Link></li>
             
             {/* Mobile Actions inside menu */}
-            <li className="nav-item mobile-only-actions" style={{ padding: '24px 0', borderTop: '1px solid var(--glass-border)', marginTop: 16 }}>
+            <li className="nav-item mobile-only-actions">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <ThemeSelector />
-                <Link to="/portal" className="nav-cta liquid-glass" style={{ padding: '8px 16px', borderRadius: '8px', color: '#fff', fontWeight: 600, textDecoration: 'none' }}>
+                <Link to="/portal" className="nav-cta liquid-glass">
                   🚀 Client Portal
                 </Link>
               </div>
@@ -157,9 +169,9 @@ export const NavigationBar = () => {
         </div>
 
         {/* Desktop Right Side */}
-        <div className="nav-desktop-actions" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div className="nav-desktop-actions">
           <ThemeSelector />
-          <Link to="/portal" className="nav-cta liquid-glass" style={{ padding: '8px 16px', borderRadius: '8px', color: '#fff', fontWeight: 600, textDecoration: 'none' }}>
+          <Link to="/portal" className="nav-cta liquid-glass">
             🚀 Client Portal
           </Link>
         </div>
