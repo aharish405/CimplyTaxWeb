@@ -8,8 +8,8 @@ export const Process = () => {
         <p className="section-subtitle">A seamless 4-step process from document upload to refund tracking.</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 32, position: 'relative' }}>
-        <div style={{ position: 'absolute', top: 32, left: '12%', right: '12%', height: 2, background: 'linear-gradient(90deg, var(--primary) 0%, transparent 100%)', zIndex: -1, opacity: 0.3 }} />
+      <div className="process-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 32, position: 'relative' }}>
+        <div className="process-line" />
         
         <div style={{ textAlign: 'center' }}>
           <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'var(--glass-bg)', border: '2px solid var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', fontSize: 24 }}>1</div>

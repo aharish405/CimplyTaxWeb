@@ -4,14 +4,27 @@
   padding: 160px 0 100px;
   position: relative;
   overflow: hidden;
-  text-align: center;
+  /* Removed text-align: center for 2-column layout */
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 }
 
 .hero-content {
-  max-width: 800px;
-  margin: 0 auto;
   position: relative;
   z-index: 10;
+  text-align: left;
 }
 
 .hero-badge {
@@ -41,8 +54,44 @@
   color: var(--text-secondary);
   margin-bottom: 40px;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  justify-content: flex-start;
+}
+
+.stats-row {
+  display: flex;
+  gap: 48px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.timer-box {
+  margin: 0;
+  max-width: 450px;
+}
+
+@media (max-width: 992px) {
+  .hero-content {
+    text-align: center;
+  }
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-actions, .stats-row {
+    justify-content: center;
+  }
+  .timer-box {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .section {
@@ -356,4 +405,165 @@
   transform: scale(1.08) rotate(-4deg);
   border-color: var(--primary);
   box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.3);
+}
+
+.process-line {
+  position: absolute;
+  top: 32px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+  z-index: -1;
+  opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+  .process-line {
+    display: none;
+  }
+}
+
+/* Mobile Navigation Styles */
+.mobile-menu-btn {
+  display: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  padding: 8px;
+}
+
+.mobile-only-actions {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .nav-desktop-actions {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .nav-overlay {
+    position: fixed;
+    top: 72px; /* height of header approx */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 72px);
+    background: var(--bg-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 999;
+    padding: 24px;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .nav-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .nav-item {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+  
+  .nav-link {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 1.1rem;
+  }
+  
+  .nav-link::after {
+    display: none; /* remove desktop hover indicator */
+  }
+  
+  .mega-menu, .dropdown-menu {
+    position: static;
+    opacity: 0;
+    visibility: hidden;
+    transform: none;
+    max-height: 0;
+    overflow: hidden;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 0;
+    background: transparent;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  }
+  
+  .nav-item.mobile-open .mega-menu,
+  .nav-item.mobile-open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    max-height: 1000px; /* arbitrary large height for animation */
+    padding: 16px 0;
+    margin-bottom: 16px;
+    background: var(--glass-bg);
+    border-radius: 12px;
+  }
+  
+  .mega-col {
+    padding: 0 16px;
+    margin-bottom: 16px;
+  }
+  
+  .mega-col:last-child {
+    border-right: none;
+    margin-bottom: 0;
+  }
+  
+  .mobile-only-actions {
+    display: block;
+  }
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-grid ul {
+    align-items: center;
+  }
+  .footer-grid .nav-logo {
+    justify-content: center;
+  }
+  .footer-grid p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .section {
+    padding: 60px 0;
+  }
+  .hero-section {
+    padding: 120px 0 60px;
+  }
 }

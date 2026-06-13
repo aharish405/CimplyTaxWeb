@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Footer = () => {
   return (
     <footer style={{ padding: '80px 0 40px', borderTop: '1px solid var(--glass-border)', marginTop: 120, background: 'var(--glass-bg)' }}>
-      <div className="container grid-3" style={{ gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '40px', marginBottom: 60 }}>
+      <div className="container footer-grid">
         <div>
           <Link to="/" className="nav-logo" style={{ marginBottom: 24, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
             <img src="/logo_ct.jpg" alt="CimplyTax Logo" style={{ height: 40, width: 'auto', borderRadius: 8, marginRight: 12 }} />

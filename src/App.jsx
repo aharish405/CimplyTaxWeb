@@ -11,6 +11,7 @@ import { PricingPage } from './pages/PricingPage';
 import { AboutPage } from './pages/AboutPage';
 import { FAQPage } from './pages/FAQPage';
 import { ContactPage } from './pages/ContactPage';
+import { PortalPage } from './pages/PortalPage';
 import { AIAssistant } from './components/website/AIAssistant';
 
 import './styles/global.css';
@@ -35,6 +36,7 @@ function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/portal" element={<PortalPage />} />
             </Routes>
           </main>
 

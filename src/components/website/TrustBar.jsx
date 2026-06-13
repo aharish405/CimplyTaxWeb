@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 export const TrustBar = () => {
   return (
     <div style={{ padding: '16px 0', borderBottom: '1px solid var(--glass-border)', background: 'var(--bg-color)', zIndex: 10 }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13 }}>
-        <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 13, gap: 16 }}>
+        <div className="hide-scrollbar" style={{ display: 'flex', gap: 24, alignItems: 'center', overflowX: 'auto', whiteSpace: 'nowrap', paddingBottom: 4 }}>
           <Link to="/pricing" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>🧾 ITR Filing — Open Now</Link>
           <Link to="/pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>📄 Salaried ITR</Link>
           <Link to="/pricing" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>💼 Business ITR</Link>
