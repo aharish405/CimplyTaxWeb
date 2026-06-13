@@ -66,6 +66,8 @@ export const NavigationBar = () => {
           
           {/* DESKTOP NAVIGATION (Hidden on mobile) */}
           <ul className="nav-links desktop-only-nav">
+            <li className="nav-item"><Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>Home</Link></li>
+
             <li className={`nav-item ${openSubMenu === 'incomeTax' ? 'mobile-open' : ''}`}>
               <div className="nav-link" onClick={() => toggleSubMenu('incomeTax')}>
                 Income Tax <span className="nav-arrow">{openSubMenu === 'incomeTax' ? <ChevronUp size={16}/> : <ChevronDown size={16}/>}</span>

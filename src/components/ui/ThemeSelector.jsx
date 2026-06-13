@@ -6,6 +6,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 export const ThemeSelector = () => {
   const { mode, toggleMode, colorTheme, setColorTheme } = useTheme();
   const [isOpen, setIsOpen] = React.useState(false);
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const themes = [
     { id: 'amber', color: '#B8873A' },
@@ -15,7 +26,7 @@ export const ThemeSelector = () => {
   ];
 
   return (
-    <div className="theme-selector-wrap">
+    <div className="theme-selector-wrap" ref={ref}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="theme-toggle-btn liquid-glass"
