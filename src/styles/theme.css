@@ -1,0 +1,92 @@
+/* Core Variables & Colors */
+:root {
+  /* Default Theme: Amber */
+  --hue: 38;
+  --saturation: 54%;
+  --lightness: 47%;
+  
+  --primary: hsl(var(--hue), var(--saturation), var(--lightness));
+  --primary-glow: hsla(var(--hue), var(--saturation), var(--lightness), 0.5);
+  --primary-transparent: hsla(var(--hue), var(--saturation), var(--lightness), 0.15);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-full: 9999px;
+  
+  --glass-blur: blur(24px);
+  --glass-blur-heavy: blur(40px);
+}
+
+/* Light Mode (default) */
+:root {
+  --bg-color: #f8f9fa;
+  --bg-color-rgb: 248, 249, 250;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --text-inverse: #ffffff;
+  
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-raised: rgba(255, 255, 255, 0.9);
+  --glass-bg: rgba(255, 255, 255, 0.5);
+  --glass-bg-hover: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* Dark Mode */
+html.dark {
+  --bg-color: #05080f;
+  --bg-color-rgb: 5, 8, 15;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-inverse: #0f172a;
+
+  --surface: rgba(30, 41, 59, 0.4);
+  --surface-raised: rgba(30, 41, 59, 0.6);
+  --glass-bg: rgba(15, 23, 42, 0.4);
+  --glass-bg-hover: rgba(30, 41, 59, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* Themes */
+html[data-theme="amber"] {
+  --hue: 38;
+  --saturation: 84%;
+  --lightness: 47%;
+}
+html.dark[data-theme="amber"] {
+  --lightness: 60%;
+}
+
+html[data-theme="sapphire"] {
+  --hue: 215;
+  --saturation: 90%;
+  --lightness: 55%;
+}
+html.dark[data-theme="sapphire"] {
+  --lightness: 65%;
+}
+
+html[data-theme="emerald"] {
+  --hue: 150;
+  --saturation: 80%;
+  --lightness: 42%;
+}
+html.dark[data-theme="emerald"] {
+  --lightness: 55%;
+}
+
+html[data-theme="amethyst"] {
+  --hue: 270;
+  --saturation: 75%;
+  --lightness: 60%;
+}
+html.dark[data-theme="amethyst"] {
+  --lightness: 75%;
+}
