@@ -49,8 +49,14 @@ export const Footer = () => {
       </div>
 
       <div className="container" style={{ textAlign: 'center', paddingTop: 32, borderTop: '1px solid var(--glass-border)' }}>
-        <p style={{ color: 'var(--text-secondary)', fontSize: 14 }}>
+        <p style={{ color: 'var(--text-secondary)', fontSize: 14, marginBottom: 6 }}>
           © {new Date().getFullYear()} CimplyTax. All rights reserved. Made with ❤️ in India.
+        </p>
+        <p style={{ color: 'var(--text-secondary)', fontSize: 13 }}>
+          Designed & developed by{' '}
+          <a href="https://pemmaglobal.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', fontWeight: 600, textDecoration: 'none' }}>
+            Pemma Global
+          </a>
         </p>
       </div>
     </footer>
