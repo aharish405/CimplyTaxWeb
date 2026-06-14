@@ -675,6 +675,8 @@
     backdrop-filter: blur(20px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
     border-bottom: 1px solid var(--glass-border) !important;
+    will-change: backdrop-filter !important;
+    transform: translateZ(0) !important;
   }
 
   .nav-desktop-actions {
