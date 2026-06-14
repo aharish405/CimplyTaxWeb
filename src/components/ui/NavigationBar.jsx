@@ -91,7 +91,7 @@ export const NavigationBar = () => {
                   <Link to="/services#it-notices" className="dropdown-item"><span className="d-icon">⚖️</span> IT Notice Reply</Link>
                   <Link to="/services#it-notices" className="dropdown-item"><span className="d-icon">🔍</span> Scrutiny Assessment</Link>
                   <Link to="/services#advance-tax" className="dropdown-item"><span className="d-icon">📊</span> Tax Planning</Link>
-                  <Link to="/services#advance-tax" className="dropdown-item" style={{ borderTop: '1px solid var(--glass-border)', marginTop: 6, paddingTop: 10, color: 'var(--primary)', fontWeight: 600 }}><span className="d-icon">🧮</span> Income Tax Calculator</Link>
+                  <Link to="/tax-calculator" className="dropdown-item" style={{ borderTop: '1px solid var(--glass-border)', marginTop: 6, paddingTop: 10, color: 'var(--primary)', fontWeight: 600 }}><span className="d-icon">🧮</span> Income Tax Calculator</Link>
                 </div>
               </div>
             </li>
@@ -275,7 +275,7 @@ export const NavigationBar = () => {
                         <Link to="/services#it-notices" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">⚖️</span><span className="mobile-service-item-name">IT Notice Reply</span></div><span className="mobile-service-item-arrow">→</span></Link>
                         <Link to="/services#it-notices" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🔍</span><span className="mobile-service-item-name">Scrutiny Assessment</span></div><span className="mobile-service-item-arrow">→</span></Link>
                         <Link to="/services#advance-tax" className="mobile-service-item"><div className="mobile-service-item-left"><span className="mobile-service-item-icon">📊</span><span className="mobile-service-item-name">Tax Planning</span></div><span className="mobile-service-item-arrow">→</span></Link>
-                        <Link to="/services#advance-tax" className="mobile-service-item" style={{ borderLeft: '3px solid var(--primary)' }}><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🧮</span><span className="mobile-service-item-name" style={{ color: 'var(--primary)', fontWeight: 600 }}>Income Tax Calculator</span></div><span className="mobile-service-item-arrow">→</span></Link>
+                        <Link to="/tax-calculator" className="mobile-service-item" style={{ borderLeft: '3px solid var(--primary)' }}><div className="mobile-service-item-left"><span className="mobile-service-item-icon">🧮</span><span className="mobile-service-item-name" style={{ color: 'var(--primary)', fontWeight: 600 }}>Income Tax Calculator</span></div><span className="mobile-service-item-arrow">→</span></Link>
                       </div>
                     </div>
                   </div>
