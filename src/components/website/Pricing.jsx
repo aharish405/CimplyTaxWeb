@@ -125,10 +125,10 @@ export const Pricing = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'start' }}
+          style={{ display: 'grid', gridTemplateColumns: `repeat(${PLANS[activeTab].length}, 1fr)`, gap: '20px', alignItems: 'start' }}
         >
           {PLANS[activeTab].map((plan, idx) => (
-            <Card key={plan.id} delay={idx * 0.1} className={plan.popular ? 'liquid-glass-heavy' : 'liquid-glass'} style={{ position: 'relative', border: plan.popular ? '1px solid var(--primary)' : '1px solid var(--glass-border)', transform: plan.popular ? 'scale(1.02)' : 'none', zIndex: plan.popular ? 2 : 1, padding: '32px 24px' }}>
+            <Card key={plan.id} delay={idx * 0.1} className={plan.popular ? 'liquid-glass-heavy' : 'liquid-glass'} style={{ position: 'relative', border: plan.popular ? '1px solid var(--primary)' : '1px solid var(--glass-border)', transform: plan.popular ? 'scale(1.02)' : 'none', zIndex: plan.popular ? 2 : 1, padding: PLANS[activeTab].length === 4 ? '24px 18px' : '32px 24px' }}>
               {plan.badge && (
                 <div style={{ position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)', background: 'var(--primary)', color: '#fff', fontSize: 11, fontWeight: 800, padding: '6px 16px', borderRadius: 20, letterSpacing: '0.1em', textTransform: 'uppercase', whiteSpace: 'nowrap', boxShadow: '0 4px 12px rgba(var(--primary-rgb), 0.3)' }}>
                   {plan.badge}
@@ -140,10 +140,10 @@ export const Pricing = () => {
                 <h3 className="serif" style={{ fontSize: '1.8rem', color: 'var(--text-primary)', marginBottom: 8, lineHeight: 1.2 }}>{plan.name}</h3>
                 <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.5, minHeight: 42 }}>{plan.desc}</p>
                 
-                <div style={{ marginTop: 24, display: 'flex', alignItems: 'baseline', gap: 6 }}>
-                  <span style={{ fontSize: '1.4rem', color: 'var(--primary)', fontWeight: 600 }}>₹</span>
-                  <span className="serif" style={{ fontSize: '3rem', color: 'var(--text-primary)', lineHeight: 1 }}>{plan.price}</span>
-                  {plan.per && <span style={{ fontSize: 14, color: 'var(--text-secondary)' }}>{plan.per}</span>}
+                <div style={{ marginTop: 20, display: 'flex', alignItems: 'baseline', gap: 6 }}>
+                  <span style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 600 }}>₹</span>
+                  <span className="serif" style={{ fontSize: PLANS[activeTab].length === 4 ? '2.4rem' : '3rem', color: 'var(--text-primary)', lineHeight: 1 }}>{plan.price}</span>
+                  {plan.per && <span style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{plan.per}</span>}
                 </div>
                 {plan.note && <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 8 }}>{plan.note}</div>}
               </div>
