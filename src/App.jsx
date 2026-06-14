@@ -1,8 +1,19 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { NavigationBar } from './components/ui/NavigationBar';
 import { Footer } from './components/website/Footer';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    // Services page handles its own scroll via hash — skip it
+    if (pathname !== '/services') {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [pathname]);
+  return null;
+};
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -26,6 +37,7 @@ function App() {
           <div className="bg-blob" style={{ top: '40%', right: '10%', width: '500px', height: '500px', animationDelay: '-5s' }} />
           <div className="bg-blob" style={{ bottom: '10%', left: '30%', width: '300px', height: '300px', animationDelay: '-10s' }} />
 
+          <ScrollToTop />
           <NavigationBar />
           
           <main>
