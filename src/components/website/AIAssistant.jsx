@@ -124,7 +124,7 @@ export const AIAssistant = () => {
     return formatted;
   };
 
-  const WA_URL = 'https://wa.me/919000292492?text=' + encodeURIComponent('Hi CimplyTax! 👋 I need help with my taxes. Can you assist me?');
+  const WA_URL = 'https://wa.me/919000292492?text=' + encodeURIComponent('Hi CimplyTax! I need help with my taxes. Can you assist me?');
 
   return (
     <div style={{ position: 'fixed', bottom: 30, right: 30, zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>

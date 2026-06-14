@@ -8,15 +8,15 @@ import { CheckCircle } from 'lucide-react';
 const WA_NUMBER = '919000292492';
 
 const buildWhatsAppUrl = (plan, tabLabel) => {
-  const features = plan.features.map(f => `• ${f}`).join('\n');
-  const priceStr = plan.per ? `₹${plan.price}${plan.per}` : `₹${plan.price}`;
+  const features = plan.features.map(f => `- ${f}`).join('\n');
+  const priceStr = plan.per ? `Rs.${plan.price}${plan.per}` : `Rs.${plan.price}`;
   const msg =
-`Hi CimplyTax! 👋 I'd like to get started with the *${plan.name} – ${tabLabel}* at *${priceStr}*.
+`Hi CimplyTax! I'd like to get started with the *${plan.name} - ${tabLabel}* at *${priceStr}*.
 
 *What's included:*
 ${features}
 
-Please guide me with the next steps! 🙏`;
+Please guide me with the next steps!`;
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 };
 
