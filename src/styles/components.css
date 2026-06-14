@@ -139,9 +139,9 @@
 }
 .nav-header.scrolled {
   padding: 12px 5%;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur-heavy);
-  -webkit-backdrop-filter: var(--glass-blur-heavy);
+  background: rgba(var(--bg-color-rgb), 0.92);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
   border-bottom: 1px solid var(--glass-border);
   box-shadow: var(--shadow-sm);
 }
