@@ -52,7 +52,7 @@ export const NavigationBar = () => {
   return (
     <header className={`nav-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }} onClick={() => { if (location.pathname !== '/services') window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
           <img src="/logo_ct.jpg" alt="CimplyTax Logo" style={{ height: 40, width: 'auto', borderRadius: 8, marginRight: 12 }} />
           <div className="nav-logo-text">Cimply<em style={{ color: 'var(--primary)' }}>Tax</em></div>
         </Link>
@@ -66,7 +66,7 @@ export const NavigationBar = () => {
           
           {/* DESKTOP NAVIGATION (Hidden on mobile) */}
           <ul className="nav-links desktop-only-nav">
-            <li className="nav-item"><Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link></li>
+            <li className="nav-item"><Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={() => { if (location.pathname !== '/services') window.scrollTo({ top: 0, behavior: 'smooth' }); }}>Home</Link></li>
 
             <li className={`nav-item ${openSubMenu === 'incomeTax' ? 'mobile-open' : ''}`}>
               <div className="nav-link" onClick={() => toggleSubMenu('incomeTax')}>
